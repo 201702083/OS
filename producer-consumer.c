@@ -57,7 +57,7 @@ void *producer(void *arg){
 		input = random()%100;
 		usleep(input);
 		pthread_mutex_lock(&buffer_lock); // lock
-		while(CQ_cnt == 1) pthread_cond_wait(&buffer,&buffer_lock); 
+		while(CQ_cnt == Q_SIZE ) pthread_cond_wait(&buffer,&buffer_lock); 
 		// 공간이 생길 떄가지 계속 unlock 상태 유지		
 		// 공간이 생겨야 아래 코드로 넘어감
 
